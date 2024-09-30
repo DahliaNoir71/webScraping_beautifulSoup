@@ -3,6 +3,11 @@ from bs4 import BeautifulSoup as bs
 
 # Récupération des élèments HTML contenant les jobs
 def get_jobs(url, name):
+    """
+    @param url: The URL of the job listing page to scrape
+    @param name: The search term to filter jobs by (optional)
+    @return: A list of dictionaries, each containing job details like title, company, location, and application URL
+    """
     status_ok = 200
     response_jobs = req.get(url_jobs)
     if response_jobs.status_code == status_ok:
@@ -43,7 +48,33 @@ def get_jobs(url, name):
         return jobs
 
 
+def def print_job_details(job):
+
+
+"""
+Prints the details of a single job.
+
+@param job: A dictionary containing job details such as title, company, location, and apply_url
+"""
+print(f'Title: {job["title"]}')
+print(f'Company: {job["company"]}')
+print(f'Location: {job["location"]}')
+print(f'Apply here: {job["apply_url"]}')
+print()
+
+
 def print_jobs(jobs):
+    """
+    Prints the details of a list of jobs.
+
+    @param jobs: A list of job dictionaries, where each dictionary contains job details such as title, company, location, and apply_url
+    """
+    for job in jobs:
+        print_job_details(job)(jobs):
+    """
+    @param jobs: A list of job dictionaries, where each dictionary contains job details such as title, company, location, and apply_url
+    @return: None
+    """
     for job in jobs:
         print(f'Title: {job['title']}')
         print(f'Company: {job["company"]}')
