@@ -25,20 +25,30 @@ def get_jobs(url, name):
                 h2_element.parent.parent.parent for h2_element in searched_jobs
             ]
 
-        return job_elements
+        jobs =[]
+        for job_element in job_elements:
+            title = job_element.find('h2', class_='title').get_text().strip()
+            company = job_element.find('h3', class_='company').get_text().strip()
+            location = job_element.find('p', class_='location').get_text().strip()
+            link = job_element.find('a', string=lambda text: 'apply' in text.lower())
+            apply_url = link['href']
+            job = {
+                'title': title,
+                'company': company,
+                'location': location,
+                'apply_url': apply_url
+            }
+            jobs.append(job)
+
+        return jobs
 
 
 def print_jobs(jobs):
     for job in jobs:
-        title = job.find('h2', class_='title').get_text().strip()
-        company = job.find('h3', class_='company').get_text().strip()
-        location = job.find('p', class_='location').get_text().strip()
-        link = job.find('a', string=lambda text: 'apply' in text.lower())
-        apply_url = link['href']
-        print(f'Title: {title}')
-        print(f'Company: {company}')
-        print(f'Location: {location}')
-        print(f'Apply here: {apply_url}')
+        print(f'Title: {job['title']}')
+        print(f'Company: {job["company"]}')
+        print(f'Location: {job['location']}')
+        print(f'Apply here: {job['apply_url']}')
         print()
 
 url_jobs = 'https://realpython.github.io/fake-jobs/'
