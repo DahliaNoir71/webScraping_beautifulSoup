@@ -1,0 +1,1 @@
+Script de Web Scraping en Python, avec utilisation des librairies rquests et beautifulsoup pour récupération d'offres d'emploi. 
