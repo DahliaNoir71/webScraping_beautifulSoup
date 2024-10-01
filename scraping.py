@@ -48,19 +48,17 @@ def get_jobs(url, name):
         return jobs
 
 
-def def print_job_details(job):
+def print_job_details(job):
+    """
+    Prints the details of a single job.
 
-
-"""
-Prints the details of a single job.
-
-@param job: A dictionary containing job details such as title, company, location, and apply_url
-"""
-print(f'Title: {job["title"]}')
-print(f'Company: {job["company"]}')
-print(f'Location: {job["location"]}')
-print(f'Apply here: {job["apply_url"]}')
-print()
+    @param job: A dictionary containing job details such as title, company, location, and apply_url
+    """
+    print(f'Title: {job["title"]}')
+    print(f'Company: {job["company"]}')
+    print(f'Location: {job["location"]}')
+    print(f'Apply here: {job["apply_url"]}')
+    print()
 
 
 def print_jobs(jobs):
@@ -70,7 +68,7 @@ def print_jobs(jobs):
     @param jobs: A list of job dictionaries, where each dictionary contains job details such as title, company, location, and apply_url
     """
     for job in jobs:
-        print_job_details(job)(jobs):
+        print_job_details(job)
     """
     @param jobs: A list of job dictionaries, where each dictionary contains job details such as title, company, location, and apply_url
     @return: None
